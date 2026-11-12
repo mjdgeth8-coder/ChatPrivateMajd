@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>قناع — تدوين بهوية مستعارة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#F3F1F8;--card:#fff;--ink:#1B1A2E;--mut:#6B6985;--acc:#5B3FE0;--acc-ink:#fff;--gold:#E8A33A;--line:#E3E0EE;--mine:#5B3FE0;--theirs:#ECE9F6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12111F;--card:#1C1B30;--ink:#EEEDF7;--mut:#9A98B5;--acc:#8F7BFF;--acc-ink:#12111F;--gold:#F2B452;--line:#2C2A46;--mine:#8F7BFF;--theirs:#2A2842;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12111F;--card:#1C1B30;--ink:#EEEDF7;--mut:#9A98B5;--acc:#8F7BFF;--acc-ink:#12111F;--gold:#F2B452;--line:#2C2A46;--mine:#8F7BFF;--theirs:#2A2842;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.7 "IBM Plex Sans Arabic",Tahoma,sans-serif;min-height:100vh}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:22px;letter-spacing:0}
+.brand i{font-style:normal;width:34px;height:34px;border-radius:50% 50% 46% 46%;background:var(--acc);color:var(--acc-ink);display:grid;place-items:center;font-size:18px}
+.lock{font-size:13px;color:var(--mut)}
+main{max-width:680px;margin:0 auto;padding:16px 16px 110px}
+.me{background:var(--ink);color:var(--bg);border-radius:20px;padding:20px;display:flex;gap:16px;align-items:center;margin-bottom:20px}
+.me .av{width:64px;height:64px;font-size:32px;flex:none}
+.me small{opacity:.7;font-size:13px;display:block}
+.me b{font-size:22px;display:block;line-height:1.3}
+.me p{margin:6px 0 0;font-size:13px;opacity:.75}
+.av{border-radius:50%;display:grid;place-items:center;width:42px;height:42px;font-size:22px;flex:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:14px}
+.ph{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.ph b{display:block;line-height:1.3}
+.ph small{color:var(--mut);font-size:12px}
+.tag{font-size:11px;background:var(--gold);color:#1B1A2E;border-radius:6px;padding:1px 7px;margin-inline-start:6px;font-weight:500}
+.card h3{margin:0 0 6px;font-size:20px;line-height:1.5}
+.card p{margin:0;white-space:pre-wrap;word-break:break-word;color:var(--ink);opacity:.92;max-width:68ch}
+button{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:10px 18px;background:var(--acc);color:var(--acc-ink);font-weight:500}
+button.ghost{background:transparent;color:var(--acc);border:1px solid var(--line);padding:6px 14px;font-size:14px;margin-top:12px}
+button:focus-visible,input:focus-visible,textarea:focus-visible,nav a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+input,textarea{width:100%;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:12px}
+textarea{min-height:220px;resize:vertical}
+.empty{text-align:center;color:var(--mut);padding:40px 16px}
+.empty button{margin-top:12px}
+nav{position:fixed;bottom:0;inset-inline:0;background:var(--card);border-top:1px solid var(--line);display:flex;justify-content:center;gap:4px;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));z-index:6}
+nav a{flex:1;max-width:200px;text-align:center;padding:8px;border-radius:12px;color:var(--mut);text-decoration:none;font-size:13px;cursor:pointer}
+nav a span{display:block;font-size:20px;line-height:1.2}
+nav a[aria-current="page"]{color:var(--acc);background:color-mix(in srgb,var(--acc) 12%,transparent);font-weight:700}
+.row{display:flex;gap:12px;align-items:center;cursor:pointer}
+.row .t{flex:1;min-width:0}
+.row .t span{display:block;color:var(--mut);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chat{display:flex;flex-direction:column;gap:8px;min-height:40vh;margin:12px 0}
+.b{max-width:80%;padding:9px 14px;border-radius:18px;white-space:pre-wrap;word-break:break-word}
+.b.m{align-self:flex-start;background:var(--mine);color:var(--acc-ink);border-end-start-radius:4px}
+.b.o{align-self:flex-end;background:var(--theirs);border-end-end-radius:4px}
+.comp{display:flex;gap:8px;position:sticky;bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+.comp input{margin:0}
+.note{font-size:13px;color:var(--mut);margin:8px 0 16px}
+.toast{position:fixed;inset-inline:16px;bottom:90px;background:var(--ink);color:var(--bg);padding:12px 16px;border-radius:12px;z-index:9;text-align:center}
+@media (prefers-reduced-motion:no-preference){.me{animation:in .5s ease both}@keyframes in{from{opacity:0;transform:translateY(8px)}}}
+</style>
+</head>
+<body>
+<header><div class="brand"><i>🎭</i>قناع</div><div class="lock">🔒 هويتك مخفية</div></header>
+<main id="app"><div class="empty">جاري التحميل…</div></main>
+<nav id="nav">
+<a data-v="feed" tabindex="0"><span>📰</span>التدوينات</a>
+<a data-v="write" tabindex="0"><span>✍️</span>اكتب</a>
+<a data-v="chat" tabindex="0"><span>💬</span>الرسائل</a>
+</nav>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+// ضع هنا إعدادات تطبيق الويب من Firebase Console > Project settings > Your apps.
+// لا تضع مفاتيح سرية أو Service Account هنا؛ هذه إعدادات الويب العامة.
+const FIREBASE_CONFIG={
+  apiKey:"ضع_API_KEY_هنا",
+  authDomain:"ضع_PROJECT_ID.firebaseapp.com",
+  projectId:"ضع_PROJECT_ID_هنا",
+  appId:"ضع_APP_ID_هنا"
+};
+</script>
+<script>
+const NN=[["صقر","🦅"],["فهد","🐆"],["غزال","🦌"],["بومة","🦉"],["ثعلب","🦊"],["ذئب","🐺"],["دلفين","🐬"],["قمر","🌙"],["نجم","⭐"],["ظل","🌑"],["سحاب","☁️"],["نمر","🐅"]];
+const AA=["هادئ","غامض","ساطع","شجاع","حالم","ماكر","نبيل","جريء","لطيف","سريع","حكيم","خفي"];
+const hs=s=>{let x=2166136261;for(const c of s){x^=c.charCodeAt(0);x=Math.imul(x,16777619)}return x>>>0};
+const alias=id=>{const x=hs(id),n=NN[x%12];return{name:n[0]+" "+AA[(x>>>8)%12]+" "+(10+(x>>>16)%90),glyph:n[1],hue:x%360}};
+const h=(t,a={},...k)=>{const e=document.createElement(t);for(const i in a){if(i==="class")e.className=a[i];else if(i.startsWith("on"))e.addEventListener(i.slice(2),a[i]);else e.setAttribute(i,a[i])}k.flat().forEach(c=>{if(c!=null&&c!==false)e.append(c)});return e};
+const av=(al,cls="")=>{const e=h("div",{class:"av "+cls},al.glyph);e.style.background=`hsl(${al.hue} 60% 55% / .22)`;return e};
+const when=t=>new Date(t).toLocaleString("ar",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+const tid=(a,b)=>"t"+[a,b].sort().join("_").replace(/[^A-Za-z0-9_-]/g,"-");
+const app=document.getElementById("app");
+let db,me,view="feed",posts=[],tA={},tB={},peer=null,msgs=[],unM=null,loaded=false;
+function toast(m){const t=h("div",{class:"toast",role:"status"},m);document.body.append(t);setTimeout(()=>t.remove(),2600)}
+function nav(v){view=v;peer=null;if(unM){unM();unM=null}render()}
+document.querySelectorAll("#nav a").forEach(a=>{a.addEventListener("click",()=>nav(a.dataset.v));a.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();nav(a.dataset.v)}})});
+function render(){
+ document.querySelectorAll("#nav a").forEach(a=>a.toggleAttribute("aria-current",a.dataset.v===(peer?"chat":view))&&0);
+ document.querySelectorAll("#nav a").forEach(a=>{if(a.dataset.v===view)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+ app.replaceChildren();
+ if(view==="feed")renderFeed();else if(view==="write")renderWrite();else peer?renderThread():renderList();
+}
+function meCard(){const al=alias(me);return h("div",{class:"me"},av(al),h("div",{},h("small",{},"اسمك المستعار"),h("b",{},al.name),h("p",{},"أُعطي لك تلقائياً وهو ثابت. لا يرى أحد اسمك الحقيقي.")))}
+function renderFeed(){
+ app.append(meCard());
+ if(!loaded){app.append(h("div",{class:"empty"},"جاري تحميل التدوينات…"));return}
+ if(!posts.length){app.append(h("div",{class:"empty"},"لا توجد تدوينات بعد.",h("br"),h("button",{onclick:()=>nav("write")},"اكتب أول تدوينة")));return}
+ posts.forEach(p=>{const al=alias(p.by),mine=p.by===me;
+  app.append(h("article",{class:"card"},
+   h("div",{class:"ph"},av(al),h("div",{},h("b",{},al.name,mine&&h("span",{class:"tag"},"أنت")),h("small",{},when(p.t)))),
+   h("h3",{},p.title),h("p",{},p.body),
+   !mine&&h("button",{class:"ghost",onclick:()=>openChat(p.by)},"💬 راسله بسرّية")))});
+}
+function renderWrite(){
+ const ti=h("input",{placeholder:"عنوان التدوينة",maxlength:"120","aria-label":"العنوان"});
+ const bo=h("textarea",{placeholder:"اكتب ما تريد…","aria-label":"النص",maxlength:"8000"});
+ const btn=h("button",{onclick:async()=>{
+  const title=ti.value.trim(),body=bo.value.trim();
+  if(!title||!body){toast("أضف عنواناً ونصاً أولاً");return}
+  btn.disabled=true;
+  try{await db.collection("posts").add({by:me,title,body,t:Date.now()});toast("تم النشر");nav("feed")}
+  catch(e){toast("تعذّر النشر، حاول مرة أخرى");btn.disabled=false}
+ }},"انشر التدوينة");
+ app.append(h("h2",{},"تدوينة جديدة"),h("p",{class:"note"},"ستُنشر باسمك المستعار: "+alias(me).name),ti,bo,btn);
+}
+function threadList(){const m={...tA,...tB};return Object.keys(m).map(k=>({id:k,...m[k]})).sort((x,y)=>y.t-x.t)}
+function renderList(){
+ app.append(h("h2",{},"رسائلك"),h("p",{class:"note"},"المحادثات تظهر بالأسماء المستعارة فقط."));
+ const l=threadList();
+ if(!l.length){app.append(h("div",{class:"empty"},"لا توجد محادثات.",h("br"),"افتح محادثة من زر «راسله» تحت أي تدوينة.",h("br"),h("button",{onclick:()=>nav("feed")},"تصفّح التدوينات")));return}
+ l.forEach(t=>{const o=t.a===me?t.b:t.a,al=alias(o);
+  app.append(h("div",{class:"card row",tabindex:"0",role:"button",onclick:()=>openChat(o),onkeydown:e=>{if(e.key==="Enter")openChat(o)}},av(al),h("div",{class:"t"},h("b",{},al.name),h("span",{},t.last||"")),h("small",{class:"lock"},when(t.t))))});
+}
+function openChat(o){
+ view="chat";peer=o;msgs=[];if(unM)unM();
+ unM=db.collection("threads/"+tid(me,o)+"/m").orderBy("t","asc").limit(300).onSnapshot(s=>{msgs=s.docs.map(d=>d.data());if(peer===o)drawMsgs()},()=>toast("تعذّر تحميل الرسائل"));
+ render();
+}
+function renderThread(){
+ const al=alias(peer);
+ app.append(h("div",{class:"row"},h("button",{class:"ghost",style:"margin:0",onclick:()=>nav("chat")},"رجوع"),av(al),h("b",{},al.name)),
+  h("p",{class:"note"},"🔒 محادثة خاصة بينك وبين "+al.name+" بأسماء مستعارة."),
+  h("div",{class:"chat",id:"msgs","aria-live":"polite"}));
+ const inp=h("input",{placeholder:"اكتب رسالة…","aria-label":"الرسالة",maxlength:"1000"});
+ const go=async()=>{const x=inp.value.trim();if(!x)return;inp.value="";
+  try{const id=tid(me,peer),ab=[me,peer].sort();
+   await db.doc("threads/"+id).set({a:ab[0],b:ab[1],last:x.slice(0,80),t:Date.now()});
+   await db.collection("threads/"+id+"/m").add({from:me,text:x,t:Date.now()})}
+  catch(e){toast("تعذّر الإرسال");inp.value=x}};
+ inp.addEventListener("keydown",e=>{if(e.key==="Enter")go()});
+ app.append(h("div",{class:"comp"},inp,h("button",{onclick:go},"إرسال")));
+ drawMsgs();
+}
+function drawMsgs(){const box=document.getElementById("msgs");if(!box)return;box.replaceChildren();
+ if(!msgs.length)box.append(h("div",{class:"empty"},"ابدأ المحادثة بأول رسالة."));
+ msgs.forEach(m=>box.append(h("div",{class:"b "+(m.from===me?"m":"o")},m.text)));
+ window.scrollTo(0,document.body.scrollHeight)}
+(async()=>{
+ try{firebase.initializeApp(FIREBASE_CONFIG);const c=await firebase.auth().signInAnonymously();me=c.user.uid;db=firebase.firestore()}catch(e){console.error(e)}
+ if(!db||!me){app.replaceChildren(h("div",{class:"empty"},"تعذّر الاتصال بالخادم. تأكد من إعدادات Firebase."));return}
+ render();
+ const slow=setTimeout(()=>{if(!loaded)toast("تعذّر الوصول للبيانات حالياً")},10000);
+ db.collection("posts").orderBy("t","desc").limit(100).onSnapshot(s=>{loaded=true;clearTimeout(slow);posts=s.docs.map(d=>d.data());if(view==="feed")render()},()=>toast("تعذّر تحميل التدوينات"));
+ const tm=(k,f)=>db.collection("threads").where(k,"==",me).onSnapshot(s=>{const o={};s.docs.forEach(d=>o[d.id]=d.data());f(o);if(view==="chat"&&!peer)render()},()=>{});
+ tm("a",o=>tA=o);tm("b",o=>tB=o);
+})();
+</script>
+</body>
+</html>

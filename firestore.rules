@@ -1,0 +1,65 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    match /posts/{postId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.keys().hasAll(['by', 'title', 'body', 't'])
+        && request.resource.data.by == request.auth.uid
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 120
+        && request.resource.data.body is string
+        && request.resource.data.body.size() > 0
+        && request.resource.data.body.size() <= 8000
+        && request.resource.data.t is number;
+      allow update, delete: if false;
+    }
+
+    match /threads/{threadId} {
+      function isParticipant(data) {
+        return signedIn()
+          && (data.a == request.auth.uid || data.b == request.auth.uid);
+      }
+
+      allow read: if isParticipant(resource.data);
+      allow create: if signedIn()
+        && request.resource.data.keys().hasAll(['a', 'b', 'last', 't'])
+        && request.resource.data.a is string
+        && request.resource.data.b is string
+        && request.resource.data.a != request.resource.data.b
+        && isParticipant(request.resource.data)
+        && request.resource.data.last is string
+        && request.resource.data.last.size() <= 80
+        && request.resource.data.t is number;
+      allow update: if isParticipant(resource.data)
+        && request.resource.data.a == resource.data.a
+        && request.resource.data.b == resource.data.b
+        && request.resource.data.a == request.resource.data.a
+        && request.resource.data.b == request.resource.data.b
+        && request.resource.data.last is string
+        && request.resource.data.last.size() <= 80
+        && request.resource.data.t is number;
+      allow delete: if false;
+
+      match /m/{messageId} {
+        function threadData() {
+          return get(/databases/$(database)/documents/threads/$(threadId)).data;
+        }
+        allow read: if isParticipant(threadData());
+        allow create: if isParticipant(threadData())
+          && request.resource.data.keys().hasAll(['from', 'text', 't'])
+          && request.resource.data.from == request.auth.uid
+          && request.resource.data.text is string
+          && request.resource.data.text.size() > 0
+          && request.resource.data.text.size() <= 1000
+          && request.resource.data.t is number;
+        allow update, delete: if false;
+      }
+    }
+  }
+}
